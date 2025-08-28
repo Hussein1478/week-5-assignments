@@ -1,0 +1,80 @@
+# Base class
+class Smartphone:
+    def __init__(self, brand, model, battery):
+        self._brand = brand      # Protected attribute (by convention)
+        self._model = model
+        self._battery = battery  # battery percentage
+        self._power_on = False   # state of the phone
+
+    # Method to turn phone on
+    def turn_on(self):
+        if not self._power_on:
+            self._power_on = True
+            print(f"{self._brand} {self._model} is now ON.")
+        else:
+            print(f"{self._brand} {self._model} is already ON.")
+
+    # Method to turn phone off
+    def turn_off(self):
+        if self._power_on:
+            self._power_on = False
+            print(f"{self._brand} {self._model} is now OFF.")
+        else:
+            print(f"{self._brand} {self._model} is already OFF.")
+
+    # Method to charge battery
+    def charge(self, amount):
+        self._battery += amount
+        if self._battery > 100:
+            self._battery = 100
+        print(f"Charging... Battery is now {self._battery}%")
+
+    # Virtual method (polymorphic - can be overridden)
+    def use_phone(self):
+        if self._power_on:
+            self._battery -= 5
+            print(f"Using {self._brand} {self._model} for browsing. Battery: {self._battery}%")
+        else:
+            print("Phone is OFF. Turn it on first!")
+
+
+# Derived class (inherits from Smartphone)
+class GamingPhone(Smartphone):
+    def __init__(self, brand, model, battery, gpu_power):
+        super().__init__(brand, model, battery)  # Call base constructor
+        self._gpu_power = gpu_power
+
+    # Override use_phone method
+    def use_phone(self):
+        if self._power_on:
+            self._battery -= 15
+            if self._battery < 0:
+                self._battery = 0
+            print(f"Playing a heavy game on {self._brand} {self._model} "
+                  f"with GPU power {self._gpu_power}. Battery: {self._battery}%")
+        else:
+            print("Gaming phone is OFF. Turn it on first!")
+
+    # Extra method only for GamingPhone
+    def boost_mode(self):
+        if self._power_on:
+            print(f"{self._brand} {self._model} is in BOOST MODE! 🚀 Maximum performance unlocked!")
+        else:
+            print("Turn on the phone before activating boost mode.")
+
+
+# Main program
+if __name__ == "__main__":
+    normal = Smartphone("Samsung", "Galaxy S22", 80)
+    gamer = GamingPhone("Asus", "ROG Phone 6", 90, 100)
+
+    # Using base class
+    normal.turn_on()
+    normal.use_phone()
+    normal.charge(10)
+    print()
+
+    # Using derived class
+    gamer.turn_on()
+    gamer.use_phone()   # Polymorphism in action (different behavior)
+    gamer.boost_mode()
