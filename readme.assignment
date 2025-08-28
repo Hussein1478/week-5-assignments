@@ -1,0 +1,57 @@
+# 📱 Smartphone & GamingPhone (OOP in Python)
+
+This project demonstrates **Object-Oriented Programming (OOP)** in Python using a `Smartphone` class and a derived `GamingPhone` class.  
+
+It covers key OOP concepts such as:
+- **Encapsulation**
+- **Inheritance**
+- **Polymorphism**
+- **Constructors**
+
+---
+
+## 🚀 Features
+
+### Smartphone Class
+- **Attributes**
+  - `_brand` → phone brand (e.g., Samsung)
+  - `_model` → phone model (e.g., Galaxy S22)
+  - `_battery` → battery percentage
+  - `_power_on` → whether the phone is turned on or off
+
+- **Methods**
+  - `turn_on()` → turns the phone on  
+  - `turn_off()` → turns the phone off  
+  - `charge(amount)` → increases battery level  
+  - `use_phone()` → simulates browsing (uses 5% battery)  
+
+---
+
+### GamingPhone Class (inherits from Smartphone)
+- **Extra Attribute**
+  - `_gpu_power` → represents the GPU strength  
+
+- **Overridden Method**
+  - `use_phone()` → simulates gaming (uses 15% battery instead of 5%)  
+
+- **New Method**
+  - `boost_mode()` → activates performance mode  
+
+---
+
+## 🛠 How It Works
+
+```python
+# Create objects
+normal = Smartphone("Samsung", "Galaxy S22", 80)
+gamer = GamingPhone("Asus", "ROG Phone 6", 90, 100)
+
+# Normal phone usage
+normal.turn_on()
+normal.use_phone()
+normal.charge(10)
+
+# Gaming phone usage
+gamer.turn_on()
+gamer.use_phone()   # Polymorphism: different behavior than Smartphone
+gamer.boost_mode()
