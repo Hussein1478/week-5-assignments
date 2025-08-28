@@ -1,0 +1,29 @@
+# 🚗✈️⛵ Vehicles Polymorphism in Python
+
+This project demonstrates **Polymorphism** in Python using different **Vehicle** classes.  
+Each class defines the same action `move()`, but implements it in a unique way.  
+
+---
+
+## 🚀 Features
+
+### Base Class: Vehicle
+- `move()` → default method showing generic movement.
+
+### Derived Classes
+- **Car** → `move()` prints "🚗 The car is driving on the road."  
+- **Bike** → `move()` prints "🚴 The bike is pedaling along the path."  
+- **Plane** → `move()` prints "✈️ The plane is flying in the sky."  
+- **Boat** → `move()` prints "⛵ The boat is sailing on the water."  
+
+---
+
+## 🛠 How It Works
+
+```python
+# Create a list of vehicles
+vehicles = [Car(), Bike(), Plane(), Boat()]
+
+# Each vehicle responds differently to move()
+for v in vehicles:
+    v.move()
